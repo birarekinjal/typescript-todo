@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IApiObject } from '../../../models/apiDataModels' 
-import { getApiObject } from '../../../utility/apiDataUtils'
-import { IUser, IUserListState } from './userModel'
+import { IApiObject } from '../../../application/models/apiDataModels'
+import { getApiObject } from '../../../application/utility/apiDataUtils'
+import { IUser, IUserListState } from '../models/userModel'
 
 export const defaultState:IUserListState = {
-  users : getApiObject([])
+  users : getApiObject([]),
 }
 
 export const usersReducer = createSlice({

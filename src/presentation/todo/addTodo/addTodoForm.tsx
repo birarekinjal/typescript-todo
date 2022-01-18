@@ -1,19 +1,18 @@
-import React from 'react';
-import { useForm ,SubmitHandler  } from 'react-hook-form';
+import React, { useState } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import useTodo from '../hooks/useTodo';
 import { FormValues } from '../model/todo';
-import { TodoService } from '../services/todo.service';
 // import { yupResolver } from '@hookform/resolvers/yup';
 // import schema from '../schema/addTodo';
 
 
-const todoService = new TodoService();
-
 const AddTodoForm = () => {
+
+  const [{ addTodoLoader }, { addTodo }] = useTodo();
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm<FormValues>({
     mode: 'onChange',
     reValidateMode: 'onChange',
@@ -21,18 +20,20 @@ const AddTodoForm = () => {
   });
 
   const onSubmit: SubmitHandler<FormValues> = data => {
-    todoService.userSubmit(data);
+    addTodo(data)
   }
 
   return (
-     <div>
+    <div>
+      {addTodoLoader && 'Loading' ||
         <form onSubmit={handleSubmit(onSubmit)}>
-              <input {...register("firstName")} />
-              <input {...register("lastName")} />
-              <input type="email" {...register("email")} />
-              <input type="submit" />
+          <input {...register("firstName")} />
+          <input {...register("lastName")} />
+          <input type="email" {...register("email")} />
+          <input type="submit" />
         </form>
-       </div>
+      }
+    </div>
   );
 };
 
