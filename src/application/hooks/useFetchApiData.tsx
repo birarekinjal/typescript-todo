@@ -1,11 +1,10 @@
-import { useState, useEffect } from 'react';
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+import { useState } from 'react';
 import { apiHooksValues } from '../models/apiDataModels';
 
 const useFetchApiData = ({
   apiFunction,
   apiParams,
-  dependencyArray,
-  apiCallCondition,
   hideErrorMessage,
   errorMessage,
   showSuccessMessage,

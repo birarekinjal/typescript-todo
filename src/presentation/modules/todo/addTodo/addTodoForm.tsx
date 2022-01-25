@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import useTodo from '../hooks/useTodo';
 import { FormValues } from '../model/todo';
@@ -25,12 +25,12 @@ function AddTodoForm() {
     <div>
       {addTodoLoader && 'Loading'
         || (
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <input {...register('firstName')} />
-          <input {...register('lastName')} />
-          <input type="email" {...register('email')} />
-          <input type="submit" />
-        </form>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <input {...register('firstName')} />
+            <input {...register('lastName')} />
+            <input type="email" {...register('email')} />
+            <input type="submit" />
+          </form>
         )}
     </div>
   );

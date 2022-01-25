@@ -1,15 +1,35 @@
 module.exports = {
-  extends: ['airbnb'],
-  plugins: ['react'],
-  parser: 'babel-eslint',
+  extends: ["airbnb-typescript"],
+  parser: '@typescript-eslint/parser',
+  plugins: ['react', "import", '@typescript-eslint'],
+  parserOptions: {
+    "requireConfigFile": false,
+    "ecmaVersion": 6,
+    "project": './tsconfig.json',
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    },
+    "babelOptions": {
+      "presets": ["@babel/preset-react"],
+    },
+  },
   env: {
     browser: true,
     node: true,
   },
   rules: {
     'no-use-before-define': 'off',
-    //'import/extensions': ['error', 'ignorePackages', { ts: 'never', tsx: 'never' }],
-    // 'react/jsx-filename-extension': ['warn', { extensions: ['.tsx'] }],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    'react/jsx-filename-extension': ['warn', { extensions: ['.tsx'] }],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.tsx', '.ts'] }],
     'react/prop-types': 'off',
     'comma-dangle': 'off',

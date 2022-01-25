@@ -1,107 +1,86 @@
-import React, { useState } from 'react';
-import { Form, InputGroup } from 'react-bootstrap';
+import React from 'react';
+import FormControl from '@mui/material/FormControl';
+import { TextField } from '@mui/material';
+// import { CustomInputProps } from '../../interfaces/types';
 
-type InputProps = {
-  type?: string,
-  placeholder?: string,
-  isPassword?: boolean,
-  iconClass?: boolean,
-  onButtonClick?: boolean,
-  tabindex?: number,
-  controlId?: string,
-  label?: boolean | string,
-  isRequired?: boolean,
-  hintText?: boolean | string | number,
-  isControlled?: boolean,
-  name?: string,
-  onPaste?: Function,
-  disabled?:boolean,
-  onChange?: Function,
-  onClick?: Function,
-  accept?: any,
-  id?: string,
-}
 
-function Input({
-  type,
-  placeholder,
-  isPassword,
-  iconClass,
-  onButtonClick,
-  tabindex,
-  controlId,
+export type CustomInputProps = {
+  label?: string;
+  placeholder?: string;
+  id?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  autoComplete?: string;
+  autoFocus?: boolean;
+  color?: 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning';
+  defaultValue?: any;
+  disabled?: boolean;
+  type?: string;
+  value?: any;
+  variant?: 'filled' | 'outlined' | 'standard';
+  name?: string;
+  required?: boolean;
+  inputProps?: object;
+  isControlled?: boolean;
+  accept?: any;
+  registeredEvents?: any;
+};
+
+const CustomInput: React.FC<CustomInputProps> = ({
   label,
-  isRequired,
-  hintText,
-  isControlled,
-  name,
-  disabled,
-  accept,
+  placeholder,
   id,
-}: InputProps) {
-  const [hidePassword, setHidePassword] = useState(true);
-
-  const managePasswordVisibility = () => {
-    setHidePassword(!hidePassword);
-  };
-
-  const showPassword = () => {
-    if (isPassword) {
-      return (
-        <i
-          className={
-            hidePassword ? 'fas fa-eye-slash' : 'fa fa-eye show-icon-in-textbox'
-          }
-          aria-hidden="true"
-          onClick={managePasswordVisibility}
-        />
-      );
-    }
-    return null;
-  };
-
+  onChange,
+  autoComplete,
+  autoFocus,
+  color,
+  defaultValue,
+  disabled,
+  type,
+  value,
+  variant,
+  name,
+  required,
+  inputProps,
+  isControlled,
+  accept,
+  registeredEvents,
+}) => {
   return (
-    <div>
-      <Form.Group
-        className={iconClass && !onButtonClick ? 'with-icon' : ''}
-        tabIndex={tabindex}
-        controlId={controlId}
-      >
-        {
-        label && (
-          <Form.Label>
-            {label}
-            {isRequired && <span className="required"> *</span>}
-            {hintText && <span className="input-example">{hintText}</span>}
-          </Form.Label>
-        )
-      }
-        <InputGroup>
-          {
+    <FormControl variant="standard">
+      {
         isControlled ? (
-          <Form.Control
-            name={name}
-            type={type}
+          <TextField
             id={id}
-          //  onPaste={onPaste}
+            label={label}
             placeholder={placeholder}
-          // ref={inputRef}
+            onChange={onChange}
+            autoComplete={autoComplete}
+            autoFocus={autoFocus}
+            defaultValue={defaultValue}
             disabled={disabled}
-          // onChange={onChange}
-          // onBlur={onBlur}
-          // value={value}
-            accept={accept}
-          // autoFocus={autoFocus}
-          // onClick={onClick}
+            color={color}
+            type={type}
+            value={value}
+            variant={variant}
+            name={name}
+            required={required}
+            InputProps={inputProps}
           />
         ) : (
-          <Form.Control />
+          <TextField
+            {...(registeredEvents || {})}
+            placeholder={placeholder}
+            disabled={disabled}
+            type={accept}
+            autoFocus={autoFocus}
+            id={id}
+            // onClick={onChange}
+            onChange={onChange}
+          />
         )
       }
-        </InputGroup>
-      </Form.Group>
-    </div>
+    </FormControl>
   );
-}
+};
 
-export default Input;
+export default CustomInput;
