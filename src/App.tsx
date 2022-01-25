@@ -1,15 +1,14 @@
 import React from 'react';
-import { store } from './application/redux/store/store';
 import { Provider } from 'react-redux';
-import ListTodo from './presentation/todo/listTodo/listTodo';
-import User from './presentation/users/user';
+import { store } from './application/redux/store/store';
+import RoutesData from './presentation/routes/routes';
+import ErrorBoundary from './presentation/errorBoundary/ErrorBoundary';
 
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <ListTodo />
-        {/* <User /> */}
+        <RoutesData />
       </div>
     </Provider>
   );

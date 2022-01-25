@@ -1,4 +1,4 @@
 export const apiStateManger = {
-  loader:false,
+  loader: false,
   error: false,
 };

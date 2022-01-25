@@ -1,4 +1,3 @@
-
 export type InputProps = {
   controlId? : number | any,
   label?: string,
@@ -23,7 +22,7 @@ export type InputProps = {
   hasButton?: boolean,
   buttonType?: string,
   prependText?: string,
-  hintText?: string ,
+  hintText?: string,
   registeredEvents?: any,
   isPassword?: boolean,
   accept?: boolean,

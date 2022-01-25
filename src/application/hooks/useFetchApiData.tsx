@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { apiHooksValues } from "../models/apiDataModels";
+import { useState, useEffect } from 'react';
+import { apiHooksValues } from '../models/apiDataModels';
 
 const useFetchApiData = ({
   apiFunction,
@@ -9,9 +9,8 @@ const useFetchApiData = ({
   hideErrorMessage,
   errorMessage,
   showSuccessMessage,
-  successMessage
+  successMessage,
 }: apiHooksValues) => {
-
   const [state, setState] = useState({
     isLoading: false,
     isError: false,
@@ -29,14 +28,14 @@ const useFetchApiData = ({
           isLoading: false,
           isError: false,
         });
-        showSuccessMessage && alert(successMessage)
+        showSuccessMessage && alert(successMessage);
       } else {
         setState({
           ...state,
           isLoading: false,
           isError: true,
         });
-        !hideErrorMessage && alert(errorMessage || res.data)
+        !hideErrorMessage && alert(errorMessage || res.data);
       }
     })
     .catch(() => {

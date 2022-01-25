@@ -1,9 +1,6 @@
-import Axios from "axios";
-
+import Axios from 'axios';
 
 export async function getUserList() {
   return await Axios.get('https://jsonplaceholder.typicode.com/users')
-  .then((res) => {
-    return res
-  })
-} 
+    .then((res) => res);
+}

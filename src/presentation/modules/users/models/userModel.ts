@@ -1,4 +1,4 @@
-import { IApiObject } from "../../../application/models/apiDataModels";
+import { IApiObject } from '../../../../application/models/apiDataModels';
 
 export interface IUser {
   address:{}

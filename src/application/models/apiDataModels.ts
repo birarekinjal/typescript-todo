@@ -1,5 +1,5 @@
-export interface  IApiObject<T>{
-  data?: T ,
+export interface IApiObject<T>{
+  data?: T,
 }
 
 export type apiHooksValues = {

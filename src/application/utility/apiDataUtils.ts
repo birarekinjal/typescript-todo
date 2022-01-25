@@ -1,7 +1,7 @@
-import { IApiObject } from "../../application/models/apiDataModels";
+import { IApiObject } from '../../application/models/apiDataModels';
 
-export function  getApiObject<T>(
+export function getApiObject<T>(
   data?: T,
-):IApiObject<T>{
-     return {data}
+):IApiObject<T> {
+  return { data };
 }

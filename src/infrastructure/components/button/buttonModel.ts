@@ -1,5 +1,5 @@
 export type ButtonProps = {
-  label?: string ,
+  label?: string,
   isLoading?: boolean,
   handleClick: Function,
   variant?: string,

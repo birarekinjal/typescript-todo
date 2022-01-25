@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { apiHooksValues } from "../models/apiDataModels";
+import { useState, useEffect } from 'react';
+import { apiHooksValues } from '../models/apiDataModels';
 
 const useFetchAPIActionData = ({
   accessPath,
@@ -11,9 +11,8 @@ const useFetchAPIActionData = ({
   hideErrorMessage,
   errorMessage,
   showSuccessMessage,
-  successMessage
+  successMessage,
 }: apiHooksValues) => {
-
   const [state, setState] = useState({
     data: defaultResponseValue,
     isLoading: false,
@@ -33,10 +32,10 @@ const useFetchAPIActionData = ({
               ...state,
               isLoading: false,
               isError: false,
-              data: res.data
+              data: res.data,
               // data: getNestedObject(res.data, accessPath) || defaultResponseValue,
             });
-            showSuccessMessage && alert(successMessage)
+            showSuccessMessage && alert(successMessage);
           } else {
             setState({
               ...state,
@@ -44,7 +43,7 @@ const useFetchAPIActionData = ({
               isError: true,
               data: defaultResponseValue,
             });
-            !hideErrorMessage && alert(errorMessage || res.data)
+            !hideErrorMessage && alert(errorMessage || res.data);
           }
         })
         .catch(() => {

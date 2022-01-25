@@ -1,13 +1,13 @@
 import React from 'react';
 import AddTodoForm from '../addTodo/addTodoForm';
 
-const ListTodo = () => {
+function ListTodo() {
   return (
     <div>
-      <AddTodoForm/>
+      <AddTodoForm />
       List Todo List
     </div>
   );
-};
+}
 
 export default ListTodo;
